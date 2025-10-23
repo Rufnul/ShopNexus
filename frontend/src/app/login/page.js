@@ -87,7 +87,7 @@ export default function LoginPage() {
                 {/* Quote */}
                 <div className="hidden md:flex flex-col justify-center items-start bg-gray-50 p-8 rounded-lg">
                     <blockquote className="text-2xl italic text-gray-700 mb-4">
-                        "Sign in to access exclusive deals and your personalized shopping experience."
+                        &quot;Sign in to access exclusive deals and your personalized shopping experience.&quot;
                     </blockquote>
                     <p className="text-gray-600">— ShopNexus Team</p>
                 </div>

@@ -14,7 +14,7 @@ export default function AboutPage() {
             {/* Right - Quote */}
             <div className="hidden md:flex flex-col justify-center items-start bg-red-50 p-8 rounded-lg">
                 <blockquote className="text-2xl italic text-gray-700 mb-4">
-                    "We are committed to delivering happiness with every order."
+                    &quot;We are committed to delivering happiness with every order.&quot;
                 </blockquote>
                 <p className="text-gray-600">— ShopNexus Team</p>
             </div>

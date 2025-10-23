@@ -5,7 +5,7 @@ export default function FAQPage() {
             <ul className="space-y-4 text-gray-600">
                 <li>
                     <strong>Q:</strong> How do I track my order?<br />
-                    <strong>A:</strong> You can track your order in your account dashboard under "Orders".
+                    <strong>A:</strong> You can track your order in your account dashboard under &quot;Orders&quot;.
                 </li>
                 <li>
                     <strong>Q:</strong> What is the return policy?<br />

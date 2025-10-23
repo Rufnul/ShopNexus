@@ -99,7 +99,7 @@ export default function SignupPage() {
                 {/* Quote */}
                 <div className="hidden md:flex flex-col justify-center items-start bg-gray-50 p-8 rounded-lg">
                     <blockquote className="text-2xl italic text-gray-700 mb-4">
-                        "Join ShopNexus today and enjoy exclusive deals and a personalized shopping experience."
+                        &quot;Join ShopNexus today and enjoy exclusive deals and a personalized shopping experience.&quot;
                     </blockquote>
                     <p className="text-gray-600">— ShopNexus Team</p>
                 </div>

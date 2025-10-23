@@ -12,7 +12,7 @@ const Testimonials = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {reviews.map((review) => (
                         <div key={review.name} className="bg-white p-6 rounded-lg shadow">
-                            <p className="text-gray-600 mb-4">"{review.text}"</p>
+                            <p className="text-gray-600 mb-4">&quot;{review.text}&quot;</p>
                             <h3 className="font-bold text-gray-800">{review.name}</h3>
                             <p className="text-yellow-400">{"★".repeat(review.rating)}</p>
                         </div>
