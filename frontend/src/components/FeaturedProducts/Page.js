@@ -43,7 +43,7 @@ const FeaturedProducts = () => {
                             <Link href={`/product/${product._id}`}>
                                 <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
                                     <Image
-                                        src={product.image || "/images/placeholder.jpg"}
+                                        src={product.image}
                                         alt={product.name}
                                         fill
                                         className="object-cover hover:scale-105 transition-transform duration-500"

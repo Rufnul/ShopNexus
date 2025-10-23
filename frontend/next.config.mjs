@@ -9,12 +9,6 @@ const nextConfig = {
             "encrypted-tbn0.gstatic.com",
             "skgusa.com",
         ],
-        remotePatterns: [
-            {
-                protocol: "https",
-                hostname: "via.placeholder.com",
-            },
-        ],
     },
 };
 
