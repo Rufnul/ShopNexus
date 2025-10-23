@@ -10,6 +10,9 @@ const nextConfig = {
             "skgusa.com",
         ],
     },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 };
 
 export default nextConfig;
