@@ -22,7 +22,7 @@ export default function SignupPage() {
 
     const onSubmit = (values) => {
         console.log("Signup Data:", values);
-        // Call signup API here
+        // Signup API here
     };
 
     return (
@@ -97,11 +97,11 @@ export default function SignupPage() {
                 </div>
 
                 {/* Quote */}
-                <div className="hidden md:flex flex-col justify-center items-start bg-gray-50 p-8 rounded-lg">
-                    <blockquote className="text-2xl italic text-gray-700 mb-4">
+                <div className="hidden md:flex flex-col justify-center items-start bg-red-100 p-8 rounded-4xl">
+                    <blockquote className="text-2xl italic text-[crimson] mb-4">
                         &quot;Join ShopNexus today and enjoy exclusive deals and a personalized shopping experience.&quot;
                     </blockquote>
-                    <p className="text-gray-600">— ShopNexus Team</p>
+                    <p className="text-gray-700">— ShopNexus Team</p>
                 </div>
             </div>
         </div>

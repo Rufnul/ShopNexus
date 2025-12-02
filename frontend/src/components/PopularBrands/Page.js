@@ -13,7 +13,7 @@ const PopularBrands = () => {
             <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">Popular Brands</h2>
             <div className="flex flex-wrap items-center justify-center gap-10">
                 {brands.map((brand, index) => (
-                    <div key={index} className="relative w-40 h-16">
+                    <div key={index} className="relative w-40 h-16 hover:shadow-2xl hover:transition rounded-b-2xl">
                         <Image
                             src={brand}
                             alt={`Brand ${index + 1}`}

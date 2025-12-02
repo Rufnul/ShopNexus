@@ -12,11 +12,11 @@ export default function BlogPage() {
         </div>
 
         {/* Right Side - Quote / Info */}
-        <div className="hidden md:flex flex-col justify-start items-start bg-gray-50 p-8 rounded-lg space-y-4">
-          <blockquote className="text-2xl italic text-gray-700">
+        <div className="hidden md:flex flex-col justify-start items-start bg-red-100 p-8 rounded-4xl space-y-4">
+          <blockquote className="text-2xl text-[crimson]">
             &quot;Stay updated with the latest trends, shopping guides, and exclusive tips from ShopNexus.&quot;
           </blockquote>
-          <p className="text-gray-600">
+          <p className="text-gray-700">
             Explore our curated articles to make the most out of your shopping experience.
           </p>
         </div>

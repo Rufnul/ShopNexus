@@ -39,7 +39,7 @@ const Footer = () => {
           <ul className="space-y-2 text-gray-300">
             <li><Link href="/contact" className="hover:text-red-500">Contact Us</Link></li>
             <li><Link href="/faq" className="hover:text-red-500">FAQ</Link></li>
-            <li><Link href="/shipping-delivery" className="hover:text-red-500">Shipping & Delivery</Link></li>
+            <li><Link href="/shipping-delivary" className="hover:text-red-500">Shipping & Delivery</Link></li>
             <li><Link href="/returns" className="hover:text-red-500">Returns</Link></li>
           </ul>
         </div>
@@ -57,7 +57,7 @@ const Footer = () => {
 
         {/* Connect */}
         <div>
-          <h3 className="font-bold mb-4">Connect</h3>
+          <h3 className="font-bold mb-4">To Connect With ShopNexus</h3>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

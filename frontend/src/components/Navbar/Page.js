@@ -16,11 +16,11 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 items-center">
-          <Link href="/" className="hover:text-red-500">Home</Link>
+          <Link href="/" className="hover:text-red-500 active:font-bold">Home</Link>
 
           {/* Shop Dropdown */}
           <div className="relative group">
-            <Link href="/shop" className="hover:text-red-500 font-medium">Shop</Link>
+            <Link href="/shop" className="hover:text-red-500 font-medium active:font-bold">Shop</Link>
             <div className="absolute left-0 top-full mt-2 w-48 bg-gray-800 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto">
               <Link href="/shop/men" className="block px-4 py-2 hover:bg-red-500 hover:text-white">Men</Link>
               <Link href="/shop/women" className="block px-4 py-2 hover:bg-red-500 hover:text-white">Women</Link>
@@ -29,10 +29,10 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link href="/new" className="hover:text-red-500">New Arrivals</Link>
-          <Link href="/sale" className="hover:text-red-500">Sale</Link>
-          <Link href="/brands" className="hover:text-red-500">Brands</Link>
-          <Link href="/blog" className="hover:text-red-500">Blog</Link>
+          <Link href="/new" className="hover:text-red-500 active:font-bold">New Arrivals</Link>
+          <Link href="/sale" className="hover:text-red-500 active:font-bold">Sale</Link>
+          <Link href="/brands" className="hover:text-red-500 active:font-bold">Brands</Link>
+          <Link href="/blog" className="hover:text-red-500 active:font-bold">Blog</Link>
           <Link href="/contact" className="hover:text-red-500">Contact</Link>
         </div>
 

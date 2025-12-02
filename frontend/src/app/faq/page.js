@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function FAQPage() {
     return (
         <div className="max-w-4xl mx-auto px-4 py-16">
@@ -13,7 +15,7 @@ export default function FAQPage() {
                 </li>
                 <li>
                     <strong>Q:</strong> How can I contact support?<br />
-                    <strong>A:</strong> Reach out via our <a href="/contact" className="text-red-500 hover:underline">Contact page</a>.
+                    <strong>A:</strong> Reach out via our <Link href="/contact" className="text-red-500 hover:underline">Contact page</Link>.
                 </li>
             </ul>
         </div>

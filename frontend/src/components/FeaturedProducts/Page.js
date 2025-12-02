@@ -24,7 +24,8 @@ const FeaturedProducts = () => {
     }, []);
 
     return (
-        <section className="max-w-7xl mx-auto px-4 py-16">
+        <div className="bg-gray-100">
+            <section className="max-w-7xl mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">
                 Featured Products
             </h2>
@@ -38,7 +39,7 @@ const FeaturedProducts = () => {
                     {products.map((product) => (
                         <div
                             key={product._id}
-                            className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow"
+                            className="bg-white rounded-lg shadow hover:shadow-2xl transition-shadow"
                         >
                             <Link href={`/product/${product._id}`}>
                                 <div className="relative w-full h-48 rounded-t-lg overflow-hidden">
@@ -59,6 +60,7 @@ const FeaturedProducts = () => {
                 </div>
             )}
         </section>
+        </div>
     );
 };
 

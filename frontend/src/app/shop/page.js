@@ -3,8 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 const categories = [
-    { name: "Men", href: "/shop/men", img: "/images/men.jpg" },
-    { name: "Women", href: "/shop/women", img: "/images/women.jpg" },
+    { name: "Men", href: "/shop/men", img: "/images/mens.jpg" },
+    { name: "Women", href: "/shop/women", img: "/images/womens.jpg" },
     { name: "Kids", href: "/shop/kids", img: "/images/kids.jpg" },
     { name: "Electronics", href: "/shop/electronics", img: "/images/electronics.jpg" },
 ];

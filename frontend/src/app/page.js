@@ -11,13 +11,13 @@ import Testimonials from "@/components/Testimonials/Page";
 export default function Home() {
   return (
     <div>
-      <Hero />
+      <Hero />  {/* bg-gray-100 */}
       <FeaturedCategories />
-      <FeaturedProducts />
+      <FeaturedProducts />  {/* bg-gray-100 */}
       <SpecialOffers />
-      <NewArrivals />
+      <NewArrivals /> {/* bg-gray-100 */}
       <PopularBrands />
-      <Testimonials />
+      <Testimonials />  {/* bg-gray-100 */}
       <BlogSection />
     </div>
   );

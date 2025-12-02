@@ -10,14 +10,15 @@ const arrivals = [
 
 const NewArrivals = () => {
     return (
-        <section className="max-w-7xl mx-auto px-4 py-16">
+       <div className="bg-gray-100">
+         <section className="max-w-7xl mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold mb-8 text-gray-800">New Arrivals</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {arrivals.map((item) => (
                     <div
                         key={item.name}
-                        className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow"
+                        className="bg-white rounded-lg shadow hover:shadow-2xl transition-shadow"
                     >
                         <Link href={item.link}>
                             {/* Image Wrapper */}
@@ -40,6 +41,7 @@ const NewArrivals = () => {
                 ))}
             </div>
         </section>
+       </div>
     );
 };
 
