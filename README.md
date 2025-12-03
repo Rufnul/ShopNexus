@@ -6,7 +6,7 @@ ShopNexus is a modern **e-commerce web application** built with **Next.js** for 
 
 ## 🌐 Live Demo
 
-- Frontend: [https://your-frontend-vercel-url.vercel.app](https://your-frontend-vercel-url.vercel.app)  
+- Frontend: https://shop-nexus-rho.vercel.app/  
 - Backend API: [https://your-backend-url.onrender.com](https://your-backend-url.onrender.com)
 
 ---
