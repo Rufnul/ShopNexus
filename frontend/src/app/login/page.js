@@ -18,16 +18,19 @@ export default function LoginPage() {
   const onSubmit = async (values, { setSubmitting, setFieldError }) => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        "https://shopnexus-94gp.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: values.email,
+            password: values.password,
+          }),
         },
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-        }),
-      });
+      );
 
       const data = await res.json();
 
