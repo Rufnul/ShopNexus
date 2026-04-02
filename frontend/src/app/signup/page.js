@@ -1,109 +1,194 @@
 "use client";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useState } from "react";
 
 export default function SignupPage() {
-    const initialValues = { name: "", email: "", password: "", confirmPassword: "" };
+  const [loading, setLoading] = useState(false);
 
-    const validationSchema = Yup.object({
-        name: Yup.string().required("Full Name is required"),
-        email: Yup.string().email("Invalid email format").required("Email is required"),
-        password: Yup.string()
-            .required("Password is required")
-            .min(8, "Password must be at least 8 characters")
-            .matches(/[a-z]/, "Password must contain at least 1 lowercase letter")
-            .matches(/[A-Z]/, "Password must contain at least 1 uppercase letter")
-            .matches(/\d/, "Password must contain at least 1 number")
-            .matches(/[@$!%*?&]/, "Password must contain at least 1 special character"),
-        confirmPassword: Yup.string()
-            .oneOf([Yup.ref("password"), null], "Passwords must match")
-            .required("Confirm Password is required"),
-    });
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
 
-    const onSubmit = (values) => {
-        console.log("Signup Data:", values);
-        // Signup API here
-    };
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Full Name is required"),
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters")
+      .matches(/[a-z]/, "Password must contain at least 1 lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least 1 uppercase letter")
+      .matches(/\d/, "Password must contain at least 1 number")
+      .matches(
+        /[@$!%*?&]/,
+        "Password must contain at least 1 special character",
+      ),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Confirm Password is required"),
+  });
 
-    return (
-        <div className="max-w-7xl mx-auto px-4 py-16">
-            <div className="grid md:grid-cols-2 gap-10 items-center">
+  const onSubmit = async (
+    values,
+    { resetForm, setSubmitting, setFieldError },
+  ) => {
+    setLoading(true);
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        }),
+      });
 
-                {/* Signup Form */}
+      const data = await res.json();
+
+      if (res.ok) {
+        console.log("Signup Success:", data);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data));
+        resetForm();
+        // Redirect to home page or dashboard
+        window.location.href = "/";
+      } else {
+        console.error("Signup Failed:", data.message);
+        setFieldError("email", data.message || "Registration failed");
+      }
+    } catch (err) {
+      console.error("Signup Error:", err);
+      setFieldError("email", "Network error. Please try again.");
+    } finally {
+      setLoading(false);
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="grid md:grid-cols-2 gap-10 items-center">
+        {/* Signup Form */}
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+            Sign Up
+          </h1>
+
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            {({ errors, touched, isSubmitting }) => (
+              <Form className="space-y-4 bg-white p-8 rounded-lg shadow-md max-w-md">
                 <div>
-                    <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Sign Up</h1>
-
-                    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                        {({ errors, touched }) => (
-                            <Form className="space-y-4 bg-white p-8 rounded-lg shadow-md max-w-md">
-
-                                <div>
-                                    <Field
-                                        type="text"
-                                        name="name"
-                                        placeholder="Full Name"
-                                        className={`w-full border px-4 py-2 rounded focus:ring-2 focus:outline-none ${errors.name && touched.name ? "border-red-500 ring-red-200" : "border-gray-300"
-                                            }`}
-                                    />
-                                    <ErrorMessage name="name" component="div" className="text-red-500 text-sm mt-1" />
-                                </div>
-
-                                <div>
-                                    <Field
-                                        type="email"
-                                        name="email"
-                                        placeholder="Email"
-                                        className={`w-full border px-4 py-2 rounded focus:ring-2 focus:outline-none ${errors.email && touched.email ? "border-red-500 ring-red-200" : "border-gray-300"
-                                            }`}
-                                    />
-                                    <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
-                                </div>
-
-                                <div>
-                                    <Field
-                                        type="password"
-                                        name="password"
-                                        placeholder="Password"
-                                        className={`w-full border px-4 py-2 rounded focus:ring-2 focus:outline-none ${errors.password && touched.password ? "border-red-500 ring-red-200" : "border-gray-300"
-                                            }`}
-                                    />
-                                    <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
-                                </div>
-
-                                <div>
-                                    <Field
-                                        type="password"
-                                        name="confirmPassword"
-                                        placeholder="Confirm Password"
-                                        className={`w-full border px-4 py-2 rounded focus:ring-2 focus:outline-none ${errors.confirmPassword && touched.confirmPassword ? "border-red-500 ring-red-200" : "border-gray-300"
-                                            }`}
-                                    />
-                                    <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm mt-1" />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 w-full md:w-auto"
-                                >
-                                    Sign Up
-                                </button>
-                            </Form>
-                        )}
-                    </Formik>
-
-                    <p className="text-gray-600 mt-4 text-sm">
-                        Already have an account? <a href="/login" className="text-red-500 hover:underline">Login</a>
-                    </p>
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    className={`w-full border px-4 py-2 rounded focus:ring-2 focus:outline-none ${
+                      errors.name && touched.name
+                        ? "border-red-500 ring-red-200"
+                        : "border-gray-300"
+                    }`}
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
                 </div>
 
-                {/* Quote */}
-                <div className="hidden md:flex flex-col justify-center items-start bg-red-100 p-8 rounded-4xl">
-                    <blockquote className="text-2xl italic text-[crimson] mb-4">
-                        &quot;Join ShopNexus today and enjoy exclusive deals and a personalized shopping experience.&quot;
-                    </blockquote>
-                    <p className="text-gray-700">— ShopNexus Team</p>
+                <div>
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className={`w-full border px-4 py-2 rounded focus:ring-2 focus:outline-none ${
+                      errors.email && touched.email
+                        ? "border-red-500 ring-red-200"
+                        : "border-gray-300"
+                    }`}
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
                 </div>
-            </div>
+
+                <div>
+                  <Field
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    className={`w-full border px-4 py-2 rounded focus:ring-2 focus:outline-none ${
+                      errors.password && touched.password
+                        ? "border-red-500 ring-red-200"
+                        : "border-gray-300"
+                    }`}
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
+
+                <div>
+                  <Field
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    className={`w-full border px-4 py-2 rounded focus:ring-2 focus:outline-none ${
+                      errors.confirmPassword && touched.confirmPassword
+                        ? "border-red-500 ring-red-200"
+                        : "border-gray-300"
+                    }`}
+                  />
+                  <ErrorMessage
+                    name="confirmPassword"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting || loading}
+                  className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 w-full md:w-auto disabled:bg-red-300 disabled:cursor-not-allowed"
+                >
+                  {loading ? "Signing up..." : "Sign Up"}
+                </button>
+              </Form>
+            )}
+          </Formik>
+
+          <p className="text-gray-600 mt-4 text-sm">
+            Already have an account?{" "}
+            <a href="/login" className="text-red-500 hover:underline">
+              Login
+            </a>
+          </p>
         </div>
-    );
+
+        {/* Quote */}
+        <div className="hidden md:flex flex-col justify-center items-start bg-red-100 p-8 rounded-4xl">
+          <blockquote className="text-2xl italic text-[crimson] mb-4">
+            &quot;Join ShopNexus today and enjoy exclusive deals and a
+            personalized shopping experience.&quot;
+          </blockquote>
+          <p className="text-gray-700">— ShopNexus Team</p>
+        </div>
+      </div>
+    </div>
+  );
 }
