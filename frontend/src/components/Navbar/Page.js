@@ -27,18 +27,18 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           href="/"
-          className="text-4xl font-bold text-red-500 hover:text-[crimson]"
+          className="text-4xl font-bold text-red-500 hover:text-[crimson] transition-colors duration-300"
         >
           ShopNexus
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6 items-center">
+        <div className="hidden md:flex space-x-6 items-center text-sm">
           {/* Shop Dropdown */}
           <div className="relative group">
             <Link
               href="/shop"
-              className="hover:text-red-500 font-medium active:font-bold"
+              className="hover:text-red-500 font-medium active:font-bold transition-colors duration-300"
             >
               Shop
             </Link>
@@ -70,19 +70,34 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link href="/new" className="hover:text-red-500 active:font-bold">
+          <Link
+            href="/new"
+            className="hover:text-red-500 active:font-bold transition-colors duration-300"
+          >
             New Arrivals
           </Link>
-          <Link href="/sale" className="hover:text-red-500 active:font-bold">
+          <Link
+            href="/sale"
+            className="hover:text-red-500 active:font-bold transition-colors duration-300"
+          >
             Sale
           </Link>
-          <Link href="/brands" className="hover:text-red-500 active:font-bold">
+          <Link
+            href="/brands"
+            className="hover:text-red-500 active:font-bold transition-colors duration-300"
+          >
             Brands
           </Link>
-          <Link href="/blog" className="hover:text-red-500 active:font-bold">
+          <Link
+            href="/blog"
+            className="hover:text-red-500 active:font-bold transition-colors duration-300"
+          >
             Blog
           </Link>
-          <Link href="/contact" className="hover:text-red-500">
+          <Link
+            href="/contact"
+            className="hover:text-red-500 transition-colors duration-300"
+          >
             Contact
           </Link>
         </div>
@@ -94,23 +109,23 @@ const Navbar = () => {
             placeholder="Search"
             className="border border-gray-700 rounded px-2 py-1 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
           />
-          <Link href="/wishlist" className="hover:text-red-500">
+          <Link href="/wishlist" className="hover:text-red-500 text-sm transition-colors duration-300">
             Wishlist
           </Link>
-          <Link href="/cart" className="hover:text-red-500">
+          <Link href="/cart" className="hover:text-red-500 text-sm transition-colors duration-300">
             Cart
           </Link>
           {user ? (
             <>
-              <span className="text-red-500 font-semibold">
-                Hello, {user.name}
-              </span>
               <button
                 onClick={handleLogout}
-                className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+                className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition-colors duration-300"
               >
                 Logout
               </button>
+              <span className="text-red-400 font-semibold text-sm">
+                Hi, {user.name}
+              </span>
             </>
           ) : (
             <Link
